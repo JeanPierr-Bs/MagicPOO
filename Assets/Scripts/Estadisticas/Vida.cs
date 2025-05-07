@@ -10,5 +10,6 @@ public class Vida : Estadistica
     {
         base.AfectarEstadisticas(valorActual);
 
+        //Otra
     }
 }
