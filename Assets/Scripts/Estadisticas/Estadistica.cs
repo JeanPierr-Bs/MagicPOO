@@ -5,23 +5,23 @@ public class Estadistica : MonoBehaviour
 {
     [Header("Estadisticas")]
     [SerializeField]
-    public int valorMaximo;
+    public int ValorMaximo;
     [SerializeField]
-    public int valorMinimo;
+    public int ValorMinimo;
     [SerializeField]
-    public int valorActual;
+    public int ValorActual;
 
     public Estadistica(int minimo, int maximo, int actual)
     {
-        valorMinimo = minimo;
-        valorMaximo = maximo;
-        valorActual = Mathf.Clamp(actual, minimo, maximo);
+        ValorMinimo = minimo;
+        ValorMaximo = maximo;
+        ValorActual = Mathf.Clamp(actual, minimo, maximo);
     }
 
     public void AfectarEstadisticas(int Valor)
     {
         //Realizar cambios a la UI directamente
         
-        valorActual = Mathf.Clamp(valorActual + Valor, valorMinimo, valorMaximo);
+        ValorActual = Mathf.Clamp(ValorActual + Valor, ValorMinimo, ValorMaximo);
     }
 }
