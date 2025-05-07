@@ -22,7 +22,7 @@ public abstract class Portador : IAfectarVida
 
     public void Curar(int Valor)
     {
-        vida 
+        //vida 
 
         throw new System.NotImplementedException();
     }
