@@ -9,5 +9,6 @@ public class Vida : Estadistica
     public Vida(int minimo, int maximo, int actual) : base(minimo, maximo, actual)
     {
         base.AfectarEstadisticas(valorActual);
+
     }
 }
