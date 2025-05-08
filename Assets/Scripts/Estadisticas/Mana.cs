@@ -1,13 +1,15 @@
 using UnityEngine;
 
-public class Mana : Estadistica 
+public class Mana : Estadistica
 {
-    int _valorMaximo;
-    int _valorMinimo;
-    int _valorActual;
+    public TipoCarga TipoCarga { get; set; }
 
-    public Mana(int minimo, int maximo, int actual) : base(minimo, maximo, actual)
+    public Mana(int valorMinimo, int valorMaximo, int valorActual, TipoCarga tipoCarga)
+        : base(valorMinimo, valorMaximo, valorActual)
     {
-        base.AfectarEstadisticas(valorActual);
+        TipoCarga = tipoCarga;
     }
+
+    public void ConsumirMana(int cantidad) => AfectarEstadisticas(-cantidad);
+    public void RegenerarMana(int cantidad) => AfectarEstadisticas(cantidad);
 }
