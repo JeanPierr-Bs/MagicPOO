@@ -13,6 +13,6 @@ public class HabilidadCurativa : Habilidad
 
     protected override void Ejecutar()
     {
-        Console.WriteLine($"{Nombre}: cura {CantidadCuracion} puntos de vida.");
+        Debug.Log($"{Nombre}: cura {CantidadCuracion} puntos de vida.");
     }
 }
