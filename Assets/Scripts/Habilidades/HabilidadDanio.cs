@@ -1,13 +1,13 @@
 using System;
 using UnityEngine;
 
-public class HabilidadDaño : Habilidad
+public class HabilidadDanio : Habilidad
 {
     public int Daño { get; set; }
     public int Radio { get; set; }
     public int Duracion { get; set; }
 
-    public HabilidadDaño(string nombre, string icono, int daño, int radio, int duracion, int coolDown, int costo)
+    public HabilidadDanio(string nombre, string icono, int daño, int radio, int duracion, int coolDown, int costo)
         : base(nombre, icono, TipoHabilidad.Dano, coolDown, costo)
     {
         Daño = daño;

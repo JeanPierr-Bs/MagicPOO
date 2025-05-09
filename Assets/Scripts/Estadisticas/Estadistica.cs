@@ -3,12 +3,8 @@ using UnityEngine;
 
 public class Estadistica : MonoBehaviour
 {
-    [Header("Estadisticas")]
-    [SerializeField]
     public int ValorMaximo;
-    [SerializeField]
     public int ValorMinimo;
-    [SerializeField]
     public int ValorActual;
 
     public Estadistica(int minimo, int maximo, int actual)
