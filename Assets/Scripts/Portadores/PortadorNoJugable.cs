@@ -16,6 +16,6 @@ public class PortadorNoJugable : Portador
 
     private void AlMorir()
     {
-        Console.WriteLine($"{Nombre} ha sido destruido.");
+        Debug.Log($"{Nombre} ha sido destruido.");
     }
 }

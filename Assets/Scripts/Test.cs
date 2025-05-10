@@ -7,15 +7,15 @@ public class Test : MonoBehaviour
     {
         SistemaHabilidades sistemaHabilidades = new SistemaHabilidades("Sistema Habilidades");
         
-        Agente1 agente1 = new Agente1("Mario", new Estadistica(0, 3, 1), new Mana(0, 0, 0, TipoCarga.CargaPorTiempo), sistemaHabilidades);
+        Agente1 agente1 = new Agente1("Mario", new Estadistica(0, 3, 1), new Mana(0, 0, 1, TipoCarga.CargaPorTiempo), sistemaHabilidades);
         
-        Habilidad habilidadCurativa = new HabilidadCurativa("Curarme", "", 1, 0, 1);
-        Habilidad habilidadDanio = new HabilidadDanio("Dañarme", "", 1, 100, 3, 0, 1);
-        Habilidad habilidadProyectil = new HabilidadProyectil("Disparar", "", 8f, 1, 0, 1);
+        Habilidad habilidadCurativa = new HabilidadCurativa("Curarme", "", 1, 1, 1);
+        Habilidad habilidadDanio = new HabilidadDanio("Dañarme", "", 1, 100, 3, 1, 1);
+        Habilidad habilidadProyectil = new HabilidadProyectil("Disparar", "", 8f, 1, 1, 1);
 
-        sistemaHabilidades.AgregarHabilidad(habilidadCurativa);
-        sistemaHabilidades.AgregarHabilidad(habilidadDanio);
-        sistemaHabilidades.AgregarHabilidad(habilidadProyectil);
+        agente1.SistemaHabilidades.AgregarHabilidad(habilidadCurativa);
+        agente1.SistemaHabilidades.AgregarHabilidad(habilidadDanio);
+        agente1.SistemaHabilidades.AgregarHabilidad(habilidadProyectil);
 
         agente1.Curar(1);
         agente1.RecibirDaño(1);

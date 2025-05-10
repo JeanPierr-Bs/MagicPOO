@@ -15,6 +15,6 @@ public class HabilidadProyectil : Habilidad
 
     protected override void Ejecutar()
     {
-        Console.WriteLine($"{Nombre}: proyectil lanzado con fuerza {Fuerza}, causando {Daño} de daño.");
+        Debug.Log($"{Nombre}: proyectil lanzado con fuerza {Fuerza}, causando {Daño} de daño.");
     }
 }

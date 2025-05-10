@@ -29,7 +29,7 @@ public abstract class Habilidad
     {
         if (!PuedeUsarse())
         {
-            Console.WriteLine($"{Nombre} está en enfriamiento.");
+            Debug.Log($"{Nombre} está en enfriamiento.");
             return;
         }
         UltimoUso = DateTime.Now;

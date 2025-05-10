@@ -17,7 +17,7 @@ public class SistemaHabilidades
     {
         if (Habilidades.Count >= 3)
         {
-            Console.WriteLine("No se pueden agregar más de 3 habilidades.");
+            Debug.Log("No se pueden agregar más de 3 habilidades.");
             return;
         }
         Habilidades.Add(habilidad);
