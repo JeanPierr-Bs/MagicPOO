@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public abstract class Habilidad
+public abstract class Habilidad: MonoBehaviour
 {
     public string Nombre { get; set; }
     public string Icono { get; set; } // Para UI
