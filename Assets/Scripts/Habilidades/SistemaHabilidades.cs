@@ -2,10 +2,14 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SistemaHabilidades
+public class SistemaHabilidades : MonoBehaviour 
 {
+    [SerializeField]
     public string Nombre { get; set; }
-    public List<Habilidad> Habilidades { get; private set; }
+    
+    [SerializeField]
+    public List<Habilidad> Habilidades { get; set; }
+       
 
     public SistemaHabilidades(string nombre)
     {
