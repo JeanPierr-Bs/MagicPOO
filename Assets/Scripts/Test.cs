@@ -20,7 +20,7 @@ public class Test : MonoBehaviour
 
     private void Awake()
     {
-        estadisticaVida = new Estadistica(Vida.maxValue, Vida.maxValue, Vida.value);
+        estadisticaVida = new Estadistica(Vida.minValue, Vida.maxValue, Vida.value);
         estadisticaMana = new Estadistica(Mana.minValue, Mana.maxValue, Mana.value);
 
         SistemaHabilidades sistemaHabilidades = new SistemaHabilidades("Sistema Habilidades");

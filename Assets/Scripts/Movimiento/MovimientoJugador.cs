@@ -17,10 +17,12 @@ public class MovimientoJugador : MonoBehaviour
     private Vector3 direccionMovimiento;
     private bool saltoSolicitado = false;
     private bool estaEnSuelo;
+    private Animator anim;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
 
@@ -39,6 +41,10 @@ public class MovimientoJugador : MonoBehaviour
             direccionMovimiento -= transform.right;
 
         direccionMovimiento = direccionMovimiento.normalized;
+
+        Vector3 movimientoLocal = transform.InverseTransformDirection(direccionMovimiento);
+        anim.SetFloat("Horizontal", Mathf.Lerp(anim.GetFloat("Horizontal"), movimientoLocal.x, Time.deltaTime * 10));
+        anim.SetFloat("Vertical", Mathf.Lerp(anim.GetFloat("Vertical"), movimientoLocal.z, Time.deltaTime * 10));
 
         // Solicitar salto
         if (Keyboard.current.spaceKey.wasPressedThisFrame && estaEnSuelo)
@@ -60,6 +66,8 @@ public class MovimientoJugador : MonoBehaviour
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, fuerzaSalto, rb.linearVelocity.z);
             saltoSolicitado = false;
         }
+        anim.SetFloat("verticalSpeed", rb.linearVelocity.y);
+        anim.SetBool("isJumping", !estaEnSuelo);
     }
 
     void OnDrawGizmosSelected()
