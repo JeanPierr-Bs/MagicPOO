@@ -37,14 +37,14 @@ public class HabilidadProyectil : Habilidad
             puntoDisparo.rotation
         );
 
-        Proyectil proyectil = proyectilGO.GetComponent<Proyectil>();
-        if (proyectil != null)
-        {
-            proyectil.Inicializar(velocidad, danio, Portador);
-        }
-        else
-        {
-            Debug.LogError("El prefab del proyectil no tiene el script Proyectil.cs.");
-        }
+        //Proyectil proyectil = proyectilGO.GetComponent<Proyectil>();
+        //if (proyectil != null)
+        //{
+        //    proyectil.Inicializar(velocidad, danio, Portador);
+        //}
+        //else
+        //{
+        //    Debug.LogError("El prefab del proyectil no tiene el script Proyectil.cs.");
+        //}
     }
 }

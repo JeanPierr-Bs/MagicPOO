@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6970794041291190461}
   - component: {fileID: 3146884422616717612}
   - component: {fileID: 1626382481227636616}
+  - component: {fileID: 2588821791107307179}
   m_Layer: 0
   m_Name: Proyectil
   m_TagString: Untagged
@@ -121,3 +122,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1466db4d09d804a45b59765bfeaa13a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &2588821791107307179
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474441921533647852}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

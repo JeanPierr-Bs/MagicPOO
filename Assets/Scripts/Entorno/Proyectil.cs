@@ -1,30 +1,27 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class Proyectil : MonoBehaviour
 {
-    private float velocidad;
-    private int danio;
-    private Portador portador;
+    public float velocidad = 20f;
+    public float tiempoVida = 5f; // DuraciÃ³n antes de destruirse
 
-    public void Inicializar(float velocidad, int danio, Portador portador)
+    private Vector3 direccion;
+
+    public void LanzarHacia(Vector3 destino)
     {
-        this.velocidad = velocidad;
-        this.danio = danio;
-        this.portador = portador;
-        Destroy(gameObject, 5f); // Destruir automáticamente después de 5 segundos
+        direccion = (destino - transform.position).normalized;
+        Destroy(gameObject, tiempoVida); // Destruir luego del tiempo definido
     }
 
     void Update()
     {
-        transform.position += transform.forward * velocidad * Time.deltaTime;
+        transform.position += direccion * velocidad * Time.deltaTime;
     }
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out PortadorNoJugable enemigo) && enemigo != portador)
+        if (other.CompareTag("Enemigo"))
         {
-            enemigo.RecibirDaño(danio);
-            Debug.Log($"{enemigo.name} recibió {danio} de daño por proyectil.");
+            Debug.Log($"ðŸ’¥ Proyectil impactÃ³ con enemigo: {other.name}");
             Destroy(gameObject);
         }
     }
