@@ -17,37 +17,38 @@ public class MovimientoJugador : MonoBehaviour
     private Vector3 direccionMovimiento;
     private bool saltoSolicitado = false;
     private bool estaEnSuelo;
-    private Animator anim;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        anim = GetComponent<Animator>();
-        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
     void Update()
     {
-        // Movimiento básico
-        direccionMovimiento = Vector3.zero;
+        // Detectar punto donde apunta el mouse
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit, 100f, capaSuelo))
+        {
+            Vector3 puntoObjetivo = hit.point;
+            Vector3 direccion = puntoObjetivo - transform.position;
+            direccion.y = 0f;
 
-        if (Keyboard.current.wKey.isPressed)
-            direccionMovimiento += transform.forward;
-        if (Keyboard.current.sKey.isPressed)
-            direccionMovimiento -= transform.forward;
-        if (Keyboard.current.dKey.isPressed)
-            direccionMovimiento += transform.right;
-        if (Keyboard.current.aKey.isPressed)
-            direccionMovimiento -= transform.right;
+            if (direccion != Vector3.zero)
+            {
+                Quaternion rotacion = Quaternion.LookRotation(direccion);
+                transform.rotation = Quaternion.Slerp(transform.rotation, rotacion, Time.deltaTime * 10f);
+            }
+        }
 
-        direccionMovimiento = direccionMovimiento.normalized;
+        // Movimiento con teclado
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
 
-        Vector3 movimientoLocal = transform.InverseTransformDirection(direccionMovimiento);
-        anim.SetFloat("Horizontal", Mathf.Lerp(anim.GetFloat("Horizontal"), movimientoLocal.x, Time.deltaTime * 10));
-        anim.SetFloat("Vertical", Mathf.Lerp(anim.GetFloat("Vertical"), movimientoLocal.z, Time.deltaTime * 10));
+        direccionMovimiento = (transform.forward * vertical + transform.right * horizontal).normalized;
 
         // Solicitar salto
-        if (Keyboard.current.spaceKey.wasPressedThisFrame && estaEnSuelo)
+        if (Input.GetButtonDown("Jump") && estaEnSuelo)
             saltoSolicitado = true;
     }
 
@@ -57,17 +58,15 @@ public class MovimientoJugador : MonoBehaviour
         estaEnSuelo = Physics.CheckSphere(puntoChequeoSuelo.position, radioChequeoSuelo, capaSuelo);
 
         // Movimiento
-        Vector3 velocidadHorizontal = direccionMovimiento * velocidadMovimiento;
-        rb.linearVelocity = new Vector3(velocidadHorizontal.x, rb.linearVelocity.y, velocidadHorizontal.z);
+        Vector3 velocidad = direccionMovimiento * velocidadMovimiento;
+        rb.linearVelocity = new Vector3(velocidad.x, rb.linearVelocity.y, velocidad.z);
 
-        // Salto directo
+        // Salto
         if (saltoSolicitado)
         {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, fuerzaSalto, rb.linearVelocity.z);
             saltoSolicitado = false;
         }
-        anim.SetFloat("verticalSpeed", rb.linearVelocity.y);
-        anim.SetBool("isJumping", !estaEnSuelo);
     }
 
     void OnDrawGizmosSelected()

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Portador : IAfectarVida
+public class Portador : MonoBehaviour, IAfectarVida
 {
     public string Nombre { get; set; }
     public Estadistica Vida { get; set; }
@@ -11,6 +11,6 @@ public class Portador : IAfectarVida
         Vida = vida;
     }
 
-    public virtual void Curar(int cantidad) => Vida.AfectarEstadisticas(cantidad);
+    public virtual void Curar(int cantidad) => Vida.AfectarEstadisticas(+cantidad);
     public virtual void RecibirDaño(int cantidad) => Vida.AfectarEstadisticas(-cantidad);
 }

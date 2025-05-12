@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,7 +21,7 @@ public class SistemaHabilidades : MonoBehaviour
     {
         if (Habilidades.Count >= 3)
         {
-            Debug.Log("No se pueden agregar m�s de 3 habilidades.");
+            Debug.Log("No se pueden agregar más de 3 habilidades.");
             return;
         }
         Habilidades.Add(habilidad);

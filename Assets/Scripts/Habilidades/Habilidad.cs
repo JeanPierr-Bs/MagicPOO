@@ -9,7 +9,9 @@ public abstract class Habilidad: MonoBehaviour
     public TipoHabilidad Tipo { get; set; }
     public int CoolDown { get; set; }
     public int Costo { get; set; }
-    private float UltimoUso;
+    private float UltimoUso { get; set; }
+
+    public PortadorJugable Portador { get; set; } // <- este es clave
 
     public Habilidad(string nombre, string icono, TipoHabilidad tipo, int coolDown, int costo)
     {
@@ -23,7 +25,12 @@ public abstract class Habilidad: MonoBehaviour
 
     public virtual bool PuedeUsarse()
     {
-        return UltimoUso >= CoolDown;
+        if (Time.time - UltimoUso < CoolDown)
+        {
+            return false;
+        }
+        UltimoUso = Time.time;
+        return true;
     }
 
     public virtual void Usar()
@@ -33,8 +40,8 @@ public abstract class Habilidad: MonoBehaviour
             Debug.Log($"{Nombre} está en enfriamiento.");
             return;
         }
-        Debug.Log($"{Nombre} usada exitosamente.");
-        //UltimoUso = DateTime.Now;
+
+        Debug.Log($"{Nombre} usada exitosamente."); // <-- este debería verse
         Ejecutar();
     }
 

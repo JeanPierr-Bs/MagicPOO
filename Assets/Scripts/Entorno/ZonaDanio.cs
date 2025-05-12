@@ -1,21 +1,40 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ZonaDanio : MonoBehaviour
 {
-    public int cantidadDanio = 5;
-    private void OnTriggerEnter(Collider other)
+    public int cantidadDanio = 10;
+    public float intervaloDanio = 1.0f; // segundos entre cada daño
+
+    private float tiempoSiguienteDanio = 0f;
+
+    private void OnTriggerStay(Collider other)
     {
-        Test test = other.GetComponent<Test>();
-        // Verificamos si entr� un Agente1 simulando con su nombre
-        if (test != null)
+        Agente1 agente = other.GetComponent<Agente1>();
+
+        if (agente != null)
         {
-            test.Agente.RecibirDa�o(cantidadDanio);
-            Debug.Log($"Zona de da�o activada: se aplicaron {cantidadDanio} puntos de da�o.");
+            if (Time.time >= tiempoSiguienteDanio)
+            {
+                agente.RecibirDaño(cantidadDanio);
+                Debug.Log($" Zona de daño constante: {agente.Nombre} recibió {cantidadDanio} puntos de daño.");
+                tiempoSiguienteDanio = Time.time + intervaloDanio;
+            }
         }
     }
-    private void Update()
+
+    private void OnTriggerExit(Collider other)
     {
-        //ActualizarUI();
+        // Reinicia el temporizador cuando el jugador sale
+        if (other.GetComponent<Agente1>() != null)
+        {
+            tiempoSiguienteDanio = 0f;
+            Debug.Log(" El jugador salió de la zona de daño.");
+        }
     }
-   
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position, GetComponent<BoxCollider>().size);
+    }
 }
