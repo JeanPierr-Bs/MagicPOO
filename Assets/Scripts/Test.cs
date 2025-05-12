@@ -1,5 +1,6 @@
 using System;
 using System.Drawing;
+using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,9 +15,13 @@ public class Test : MonoBehaviour
     [SerializeField]
     public Slider Mana;
 
+    public Agente1 Agente => agente1;
+
+
     private protected Estadistica estadisticaVida;
     private protected Estadistica estadisticaMana;
     private protected Agente1 agente1;
+
 
     private void Awake()
     {
@@ -25,11 +30,11 @@ public class Test : MonoBehaviour
 
         SistemaHabilidades sistemaHabilidades = new SistemaHabilidades("Sistema Habilidades");
         
-        agente1 = new Agente1("Mario", "", new Estadistica(0, 3, 1), new Mana(0, 0, 1, TipoCarga.CargaPorTiempo), sistemaHabilidades);
-        
-        Habilidad habilidadCurativa = new HabilidadCurativa("Curarme", "", 1, 3, 1);
+        agente1 = new Agente1("Mario", "", new Estadistica(0, 100, 100), new Mana(0, 100, 100, TipoCarga.CargaPorTiempo), sistemaHabilidades);
+
+        Habilidad habilidadCurativa = new HabilidadCurativa("Curarme", "", 15, 3, 10);
         Habilidad habilidadDanio = new HabilidadDanio("Dañar", "", 1, 100, 3, 1, 1);
-        Habilidad habilidadProyectil = new HabilidadProyectil("Disparar", "", 8f, 1, 1, 1);
+        //Habilidad habilidadProyectil = new HabilidadProyectil("Disparar", "", 8f, 1, 1, 1);
 
         agente1.SistemaHabilidades.AgregarHabilidad(habilidadCurativa);
         agente1.SistemaHabilidades.AgregarHabilidad(habilidadDanio);
@@ -43,15 +48,10 @@ public class Test : MonoBehaviour
         NombrePlayer.text = agente1.Nombre;
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {       
-
-    }
-
     // Update is called once per frame
     void Update()
     {
+        ActualizarUI();
         ControlarHabilidad();
         ControlarEstadistica();
     }
@@ -66,6 +66,19 @@ public class Test : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.V))
         {
             agente1.UsarHabilidad(TipoHabilidad.Curativa);
+            //agente1.UsarHabilidadConVida(TipoHabilidad.Curativa, 5);
+            agente1.RecibirDaño(10);
+            Debug.Log("El portador tiene -10 de vida");
+        }
+    }
+    void ActualizarUI()
+    {
+        if (agente1 != null)
+        {
+            Vida.value = agente1.Vida.ValorActual;
+            Mana.value = agente1.Mana.ValorActual;
+
+            agente1.VerificarMuerte();
         }
     }
 }

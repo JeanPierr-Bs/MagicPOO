@@ -22,4 +22,9 @@ public class Estadistica : MonoBehaviour
     {        
         ValorActual = Mathf.Clamp(ValorActual + Valor, ValorMinimo, ValorMaximo);
     }
+    public void Restaurar()
+    {
+        ValorActual = ValorMaximo;
+    }
+
 }

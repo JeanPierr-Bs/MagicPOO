@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class Habilidad: MonoBehaviour
@@ -8,7 +9,7 @@ public abstract class Habilidad: MonoBehaviour
     public TipoHabilidad Tipo { get; set; }
     public int CoolDown { get; set; }
     public int Costo { get; set; }
-    private DateTime UltimoUso;
+    private float UltimoUso;
 
     public Habilidad(string nombre, string icono, TipoHabilidad tipo, int coolDown, int costo)
     {
@@ -17,12 +18,12 @@ public abstract class Habilidad: MonoBehaviour
         Tipo = tipo;
         CoolDown = coolDown;
         Costo = costo;
-        UltimoUso = DateTime.MinValue;
+        UltimoUso = -CoolDown;
     }
 
     public virtual bool PuedeUsarse()
     {
-        return (DateTime.Now - UltimoUso).TotalSeconds >= CoolDown;
+        return UltimoUso >= CoolDown;
     }
 
     public virtual void Usar()
@@ -32,7 +33,8 @@ public abstract class Habilidad: MonoBehaviour
             Debug.Log($"{Nombre} está en enfriamiento.");
             return;
         }
-        UltimoUso = DateTime.Now;
+        Debug.Log($"{Nombre} usada exitosamente.");
+        //UltimoUso = DateTime.Now;
         Ejecutar();
     }
 

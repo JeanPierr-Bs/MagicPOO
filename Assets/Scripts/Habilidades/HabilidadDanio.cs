@@ -17,6 +17,6 @@ public class HabilidadDanio : Habilidad
 
     protected override void Ejecutar()
     {
-        Debug.Log($"{Nombre} inflige {Daño} de daño en un área de {Radio} (duración: {Duracion}s).");
+        //Debug.Log($"{Nombre} inflige {Daño} de daño en un área de {Radio} (duración: {Duracion}s).");
     }
 }
