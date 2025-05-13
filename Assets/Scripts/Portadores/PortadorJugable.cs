@@ -7,21 +7,23 @@ public class PortadorJugable : Portador
     public string Icono { get; set; }
     public Mana Mana { get; set; }
     public SistemaHabilidades SistemaHabilidades { get; set; }
-    
-
+   
     private bool estaMuerto = false;
 
-    public PortadorJugable()
-    {
-        
-    }
+    //public PortadorJugable(string nombre, string icono, Estadistica vida, Mana mana, SistemaHabilidades sistemaHabilidades)
+    //    : base(nombre, vida)
+    //{
+    //    Mana = mana;
+    //    SistemaHabilidades = sistemaHabilidades;
+    //}
 
-    public PortadorJugable(string nombre, string icono, Estadistica vida, Mana mana, SistemaHabilidades sistemaHabilidades)
-        : base(nombre, vida)
+    public void Inicializar(string nombre, string icono, Estadistica vida, Mana mana, SistemaHabilidades sistemaHabilidades)        
     {
         Mana = mana;
         SistemaHabilidades = sistemaHabilidades;
     }
+
+
     public void UsarHabilidad(TipoHabilidad tipo)
     {
         var habilidd = SistemaHabilidades.Habilidades[0];

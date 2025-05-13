@@ -13,7 +13,17 @@ public abstract class Habilidad: MonoBehaviour
 
     public PortadorJugable Portador { get; set; } // <- este es clave
         
-    public Habilidad(string nombre, string icono, TipoHabilidad tipo, int coolDown, int costo)
+    //public Habilidad(string nombre, string icono, TipoHabilidad tipo, int coolDown, int costo)
+    //{
+    //    Nombre = nombre;
+    //    Icono = icono;
+    //    Tipo = tipo;
+    //    CoolDown = coolDown;
+    //    Costo = costo;
+    //    UltimoUso = -CoolDown;
+    //}
+
+    public void Inicializar(string nombre, string icono, TipoHabilidad tipo, int coolDown, int costo)
     {
         Nombre = nombre;
         Icono = icono;

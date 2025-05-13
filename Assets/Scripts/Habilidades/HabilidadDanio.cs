@@ -9,14 +9,14 @@ public class HabilidadDanio : Habilidad
 
     private GameObject areaPrefab;
 
-    public HabilidadDanio(string nombre, string icono, int daño, int radio, int duracion, int coolDown, int costo, GameObject prefab)
-        : base(nombre, icono, TipoHabilidad.Dano, coolDown, costo)
-    {
-        Daño = daño;
-        Radio = radio;
-        Duracion = duracion;
-        areaPrefab = prefab;
-    }
+    //public HabilidadDanio(string nombre, string icono, int daño, int radio, int duracion, int coolDown, int costo, GameObject prefab)
+    //    : base(nombre, icono, TipoHabilidad.Dano, coolDown, costo)
+    //{
+    //    Daño = daño;
+    //    Radio = radio;
+    //    Duracion = duracion;
+    //    areaPrefab = prefab;
+    //}
 
     protected override void Ejecutar()
     {

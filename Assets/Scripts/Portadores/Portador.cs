@@ -5,12 +5,13 @@ public class Portador : MonoBehaviour, IAfectarVida
     public string Nombre { get; set; }
     public Estadistica Vida { get; set; }
 
-    public Portador()
-    {
-        
-    }
+    //public Portador(string nombre, Estadistica vida)
+    //{
+    //    Nombre = nombre;
+    //    Vida = vida;
+    //}
 
-    public Portador(string nombre, Estadistica vida)
+    public void Inicializar(string nombre, Estadistica vida)
     {
         Nombre = nombre;
         Vida = vida;

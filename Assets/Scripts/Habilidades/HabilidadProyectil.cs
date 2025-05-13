@@ -7,6 +7,8 @@ public class HabilidadProyectil : Habilidad
     public string nombre;
     [SerializeField]
     public string icono;
+    //[SerializeField]
+    public TipoHabilidad Tipo;
     [SerializeField]
     public float velocidad;
     [SerializeField]
@@ -18,11 +20,11 @@ public class HabilidadProyectil : Habilidad
     [SerializeField]
     public GameObject prDisparadorProyectil;
 
-    public HabilidadProyectil(string nombre, string icono, float velocidad, int danio, int cooldown, int costo, GameObject PrDisparadorProyectil)
-        : base(nombre, icono, TipoHabilidad.Proyectil, cooldown, costo)
-    {
-        prDisparadorProyectil = PrDisparadorProyectil;
-    }
+    //public HabilidadProyectil(string nombre, string icono, float velocidad, int danio, int cooldown, int costo, GameObject PrDisparadorProyectil)
+    //    : base(nombre, icono, TipoHabilidad.Proyectil, cooldown, costo)
+    //{
+    //    prDisparadorProyectil = PrDisparadorProyectil;
+    //}
 
     protected override void Ejecutar()
     {

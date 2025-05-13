@@ -75,13 +75,13 @@ public class Test1 : MonoBehaviour
         agente = _test1.agente;
         _agente1 = agente.GetComponent<Agente1>();
 
-        //habilidadCurativa = _test1.habilidadCurativa;
-        //_habilidadCurativa = habilidadCurativa.GetComponent<HabilidadCurativa>();
-        //_sistemaHabilidades.AgregarHabilidad(_habilidadCurativa);
-        
-        //habilidadDanio = _test1.habilidadDanio;
-        //_habilidadDanio = habilidadDanio.GetComponent<HabilidadDanio>();
-        //_sistemaHabilidades.AgregarHabilidad(_habilidadDanio);
+        habilidadCurativa = _test1.habilidadCurativa;
+        _habilidadCurativa = habilidadCurativa.GetComponent<HabilidadCurativa>();
+        _sistemaHabilidades.AgregarHabilidad(_habilidadCurativa);
+
+        habilidadDanio = _test1.habilidadDanio;
+        _habilidadDanio = habilidadDanio.GetComponent<HabilidadDanio>();
+        _sistemaHabilidades.AgregarHabilidad(_habilidadDanio);
 
         habilidadProyectil = _test1.habilidadProyectil;
         _habilidadProyectil = habilidadProyectil.GetComponent<HabilidadProyectil>();
@@ -135,7 +135,8 @@ public class Test1 : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            _agente1.UsarHabilidad(TipoHabilidad.Proyectil);
+            //_agente1.UsarHabilidad(TipoHabilidad.Proyectil);
+            _agente1.SistemaHabilidades.LanzarHabilidad(TipoHabilidad.Proyectil);
         }
     }
 }

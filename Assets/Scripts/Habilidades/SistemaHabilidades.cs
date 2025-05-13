@@ -7,18 +7,16 @@ public class SistemaHabilidades : MonoBehaviour
     [SerializeField]
     public string Nombre;
     
-    public List<Habilidad> Habilidades { get; set; }
+    public List<Habilidad> Habilidades { get; set; } = new List<Habilidad>();
 
-    public SistemaHabilidades(string nombre)
-    {
-        Nombre = nombre;
-        Habilidades = new List<Habilidad>();
-    }
+    //public SistemaHabilidades(string nombre)
+    //{
+    //    Nombre = nombre;
+    //    Habilidades = new List<Habilidad>();
+    //}
 
     public void AgregarHabilidad(Habilidad habilidad)
     {
-        if (Habilidades == null) Habilidades = new List<Habilidad>();
-
         if (Habilidades.Count >= 3)
         {
             Debug.Log("No se pueden agregar más de 3 habilidades.");
@@ -33,11 +31,17 @@ public class SistemaHabilidades : MonoBehaviour
     {
         foreach (var habilidad in Habilidades)
         {
-            if (habilidad.Tipo == tipo)
+            var th = habilidad.Tipo;
+            if (habilidad.Tipo.Equals(tipo))
+            {
+                habilidad.Usar();
+            }
+            if (th.Equals(tipo))
             {
                 habilidad.Usar();
             }
         }
+
     }
 
     public void UsarTodas() => Habilidades.ForEach(h => h.Usar());
