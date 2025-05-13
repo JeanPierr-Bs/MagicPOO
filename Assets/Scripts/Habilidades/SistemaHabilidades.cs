@@ -5,11 +5,9 @@ using UnityEngine;
 public class SistemaHabilidades : MonoBehaviour 
 {
     [SerializeField]
-    public string Nombre { get; set; }
+    public string Nombre;
     
-    [SerializeField]
     public List<Habilidad> Habilidades { get; set; }
-       
 
     public SistemaHabilidades(string nombre)
     {
@@ -19,6 +17,8 @@ public class SistemaHabilidades : MonoBehaviour
 
     public void AgregarHabilidad(Habilidad habilidad)
     {
+        if (Habilidades == null) Habilidades = new List<Habilidad>();
+
         if (Habilidades.Count >= 3)
         {
             Debug.Log("No se pueden agregar más de 3 habilidades.");

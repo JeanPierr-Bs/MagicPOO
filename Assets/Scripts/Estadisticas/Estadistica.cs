@@ -11,6 +11,11 @@ public class Estadistica : MonoBehaviour
     public int ValorMinimo { get => valorMinimo; set => valorMinimo = value; }
     public int ValorActual { get => valorActual; set => valorActual = value; }
 
+    public Estadistica()
+    {
+
+    }
+
     public Estadistica(float minimo, float maximo, float actual)
     {
         ValorMinimo = (int)minimo;

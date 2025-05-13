@@ -7,11 +7,14 @@ public class PortadorJugable : Portador
     public string Icono { get; set; }
     public Mana Mana { get; set; }
     public SistemaHabilidades SistemaHabilidades { get; set; }
-    public Transform PuntoDisparo { get; set; } // Asignado desde Test o vía Inspector
-
-
+    
 
     private bool estaMuerto = false;
+
+    public PortadorJugable()
+    {
+        
+    }
 
     public PortadorJugable(string nombre, string icono, Estadistica vida, Mana mana, SistemaHabilidades sistemaHabilidades)
         : base(nombre, vida)
@@ -21,13 +24,13 @@ public class PortadorJugable : Portador
     }
     public void UsarHabilidad(TipoHabilidad tipo)
     {
+        var habilidd = SistemaHabilidades.Habilidades[0];
+
         foreach (var habilidad in SistemaHabilidades.Habilidades)
         {
             if (habilidad.Tipo == tipo)
             {
-                habilidad.Portador = this; // ✅ ASIGNACIÓN NECESARIA
-                //SistemaHabilidades.LanzarHabilidad(tipo);
-                habilidad.Usar();
+                SistemaHabilidades.LanzarHabilidad(tipo);
             }
         }
     }
