@@ -11,7 +11,19 @@ public class Estadistica : MonoBehaviour
     public int ValorMinimo { get => valorMinimo; set => valorMinimo = value; }
     public int ValorActual { get => valorActual; set => valorActual = value; }
 
-    public Estadistica(float minimo, float maximo, float actual)
+    //public Estadistica()
+    //{
+
+    //}
+
+    //public Estadistica(float minimo, float maximo, float actual)
+    //{
+    //    ValorMinimo = (int)minimo;
+    //    ValorMaximo = (int)maximo;
+    //    ValorActual = (int)Mathf.Clamp(actual, minimo, maximo);
+    //}
+
+    public void Inicializar(float minimo, float maximo, float actual)
     {
         ValorMinimo = (int)minimo;
         ValorMaximo = (int)maximo;

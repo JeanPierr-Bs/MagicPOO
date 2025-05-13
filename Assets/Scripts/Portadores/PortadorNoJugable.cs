@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class PortadorNoJugable : Portador
 {
-    public PortadorNoJugable(string nombre, Estadistica vida)
-        : base(nombre, vida) { }
+    //public PortadorNoJugable(string nombre, Estadistica vida)
+    //    : base(nombre, vida) { }
 
     public void VerificarMuerte()
     {

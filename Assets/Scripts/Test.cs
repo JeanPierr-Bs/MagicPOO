@@ -18,41 +18,41 @@ public class Test : MonoBehaviour
     [SerializeField]
     public GameObject areaDanioPrefab; // Asignas esto en el Inspecto
     [SerializeField]
-    public GameObject prefabProyectil;
-
-    public Agente1 Agente => agente1;
-
-
-    private protected Estadistica estadisticaVida;
-    private protected Estadistica estadisticaMana;
-    private protected Agente1 agente1;
+    public GameObject prefabDisparadorProyectil;
+    
+    private Estadistica estadisticaVida;
+    private Estadistica estadisticaMana;
+    private Agente1 agente1;
 
 
-    private void Awake()
+    void Awake()
     {
-        estadisticaVida = new Estadistica(Vida.minValue, Vida.maxValue, Vida.value);
-        estadisticaMana = new Estadistica(Mana.minValue, Mana.maxValue, Mana.value);
+        //estadisticaVida = new Estadistica(Vida.minValue, Vida.maxValue, Vida.value);
+        //estadisticaMana = new Estadistica(Mana.minValue, Mana.maxValue, Mana.value);
 
-        SistemaHabilidades sistemaHabilidades = new SistemaHabilidades("Sistema Habilidades");
-        
-        agente1 = new Agente1("Mario", "", new Estadistica(0, 50, 50), new Mana(0, 0, 0, TipoCarga.CargaPorTiempo), sistemaHabilidades);
-        agente1.PuntoDisparo = GameObject.Find("PuntoDisparo").transform;
+        //SistemaHabilidades sistemaHabilidades = new SistemaHabilidades("Sistema Habilidades");
+
+        //agente1 = new Agente1("Mario", "", new Estadistica(0, 100, 50), new Mana(0, 0, 0, TipoCarga.CargaPorTiempo), sistemaHabilidades);
+        ////agente1.PuntoDisparo = GameObject.Find("PuntoDisparo").transform;
 
 
-        Habilidad habilidadCurativa = new HabilidadCurativa("Curarme", "", 15, 3, 10);
-        Habilidad habilidadDanio = new HabilidadDanio("Dañar", "", 30, 3, 3, 10, 15, areaDanioPrefab);
-        Habilidad habilidadProyectil = new HabilidadProyectil("Disparar", "", 8f, 20, 15, 30, prefabProyectil);
+        //Habilidad habilidadCurativa = new HabilidadCurativa("Curarme", "", 15, 3, 10);
+        //Habilidad habilidadDanio = new HabilidadDanio("Dañar", "", 30, 3, 3, 10, 15, areaDanioPrefab);
+        //Habilidad habilidadProyectil = new HabilidadProyectil("Disparar", "", 8f, 20, 15, 30, prefabDisparadorProyectil);
 
-        agente1.SistemaHabilidades.AgregarHabilidad(habilidadCurativa);
-        agente1.SistemaHabilidades.AgregarHabilidad(habilidadDanio);
-        agente1.SistemaHabilidades.AgregarHabilidad(habilidadProyectil);
+        //agente1.SistemaHabilidades.AgregarHabilidad(habilidadCurativa);
+        //agente1.SistemaHabilidades.AgregarHabilidad(habilidadDanio);
+        //agente1.SistemaHabilidades.AgregarHabilidad(habilidadProyectil);
 
-        //agente1.Curar(1);
-        //agente1.RecibirDaño(1);
-        //agente1.UsarHabilidadConVida(TipoHabilidad.Curativa, 1);
-        //agente1.UsarHabilidad(TipoHabilidad.Curativa);
+        ////agente1.Curar(1);
+        ////agente1.RecibirDaño(1);
+        ////agente1.UsarHabilidadConVida(TipoHabilidad.Curativa, 1);
+        ////agente1.UsarHabilidad(TipoHabilidad.Curativa);
 
-        NombrePlayer.text = agente1.Nombre;
+        //NombrePlayer.text = agente1.Nombre;               
+
+        //var x = gameObject.GetComponent<Agente1>();
+        //x = agente1;
     }
 
     // Update is called once per frame
